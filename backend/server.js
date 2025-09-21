@@ -410,6 +410,8 @@ function endQuestion(pin) {
   }));
   
   console.log(`Sending question-ended event - correctAnswer: ${question.correctAnswer}`);
+  console.log(`Question data:`, question);
+  console.log(`Results:`, results);
   io.to(`game-${pin}`).emit('question-ended', {
     correctAnswer: question.correctAnswer,
     results

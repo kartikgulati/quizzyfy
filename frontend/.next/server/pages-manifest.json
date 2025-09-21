@@ -2,9 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/game/[pin]": "pages/game/[pin].js",
-  "/host/dashboard": "pages/host/dashboard.js",
   "/": "pages/index.js",
   "/host/create": "pages/host/create.js",
-  "/host/game/[pin]": "pages/host/game/[pin].js"
+  "/game/[pin]": "pages/game/[pin].js",
+  "/host/game/[pin]": "pages/host/game/[pin].js",
+  "/host/dashboard": "pages/host/dashboard.js"
 }

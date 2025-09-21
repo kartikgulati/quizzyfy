@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Timer, Users, Trophy, CheckCircle, XCircle } from 'lucide-react';
@@ -20,7 +20,8 @@ export default function GameRoom() {
     isCorrect: boolean;
     correctAnswer: number;
   } | null>(null);
-  const [userAnswer, setUserAnswer] = useState<number | null>(null);
+  const [userAnswerForCurrentQuestion, setUserAnswerForCurrentQuestion] = useState<number | null>(null);
+  const userAnswerRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!pin || !name) return;
@@ -42,10 +43,13 @@ export default function GameRoom() {
     });
 
     socket.on('question-started', (data) => {
+      console.log('Question started:', data.question);
+      console.log('Question correctAnswer:', data.question.correctAnswer);
       setCurrentQuestion(data.question);
       setTimeRemaining(data.timeLimit);
       setSelectedAnswer(null);
-      setUserAnswer(null);
+      setUserAnswerForCurrentQuestion(null);
+      userAnswerRef.current = null;
       setHasAnswered(false);
       setShowResults(false);
       setLastAnswerResult(null);
@@ -63,10 +67,13 @@ export default function GameRoom() {
     });
 
     socket.on('question-ended', (data) => {
-      console.log('Question ended - userAnswer:', userAnswer, 'correctAnswer:', data.correctAnswer);
+      console.log('Question ended - userAnswerRef.current:', userAnswerRef.current, 'correctAnswer:', data.correctAnswer);
+      console.log('Comparison result:', userAnswerRef.current === data.correctAnswer);
+      console.log('userAnswerRef.current type:', typeof userAnswerRef.current, 'correctAnswer type:', typeof data.correctAnswer);
+      
       setShowResults(true);
       setLastAnswerResult({
-        isCorrect: userAnswer === data.correctAnswer,
+        isCorrect: userAnswerRef.current === data.correctAnswer,
         correctAnswer: data.correctAnswer,
       });
     });
@@ -92,17 +99,22 @@ export default function GameRoom() {
     if (hasAnswered || !currentQuestion) return;
 
     console.log('Submitting answer:', answerIndex, 'for question:', currentQuestion.id);
+    console.log('Current question correctAnswer:', currentQuestion.correctAnswer);
+    console.log('Answer comparison:', answerIndex === currentQuestion.correctAnswer);
     setSelectedAnswer(answerIndex);
-    setUserAnswer(answerIndex);
+    setUserAnswerForCurrentQuestion(answerIndex);
+    userAnswerRef.current = answerIndex;
     setHasAnswered(true);
 
     const socket = socketManager.getSocket();
     if (socket) {
-      socket.emit('submit-answer', {
+      const submitData = {
         questionId: currentQuestion.id,
         answerIndex,
         timeToAnswer: currentQuestion.timeLimit - timeRemaining,
-      });
+      };
+      console.log('Sending submit-answer data:', submitData);
+      socket.emit('submit-answer', submitData);
     }
   };
 
