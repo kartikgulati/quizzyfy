@@ -31,21 +31,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/game/[pin].js"
-    ],
-    "/host/create": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/host/create.js"
-    ],
-    "/host/dashboard": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/host/dashboard.js"
-    ],
-    "/host/game/[pin]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/host/game/[pin].js"
     ]
   },
   "ampFirstPages": []
