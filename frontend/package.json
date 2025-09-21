@@ -1,0 +1,30 @@
+{
+  "name": "quiz-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "framer-motion": "^10.16.5",
+    "lucide-react": "^0.344.0",
+    "next": "14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "socket.io-client": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.15",
+    "@types/react": "18.3.24",
+    "@types/react-dom": "^18.2.15",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "5.9.2"
+  }
+}
