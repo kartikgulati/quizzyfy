@@ -8,7 +8,14 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+    origin: [
+      "http://localhost:3000", 
+      "http://127.0.0.1:3000",
+      "https://*.vercel.app",
+      "https://*.railway.app",
+      "https://*.render.com",
+      "https://*.herokuapp.com"
+    ],
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -475,7 +482,11 @@ app.get('/api/games', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Environment: ${NODE_ENV}`);
   console.log(`Sample game available with PIN: ${sampleQuizzes[0].pin}`);
+  console.log(`CORS enabled for: ${NODE_ENV === 'production' ? 'production domains' : 'localhost'}`);
 });

@@ -1,0 +1,10 @@
+{
+  "name": "quiz-api",
+  "version": "1.0.0",
+  "description": "Quiz API for Vercel deployment",
+  "main": "socket.js",
+  "dependencies": {
+    "socket.io": "^4.7.4",
+    "uuid": "^9.0.1"
+  }
+}

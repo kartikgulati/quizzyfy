@@ -1,7 +1,8 @@
 {
-  "name": "realtime-quiz-app",
+  "name": "quizzyfy",
   "version": "1.0.0",
   "description": "A real-time quiz application with separate frontend and backend",
+  "main": "backend/server.js",
   "scripts": {
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
@@ -10,9 +11,27 @@
     "build:backend": "cd backend && npm run build",
     "start:frontend": "cd frontend && npm start",
     "start:backend": "cd backend && npm start",
-    "postinstall": "cd frontend && npm install && cd ../backend && npm install"
+    "start": "npm run start:backend",
+    "build": "npm run build:frontend && npm run build:backend",
+    "postinstall": "cd frontend && npm install && cd ../backend && npm install",
+    "deploy": "./deploy.sh"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
-  }
+  },
+  "keywords": [
+    "quiz",
+    "real-time",
+    "socket.io",
+    "nextjs",
+    "react",
+    "nodejs",
+    "express"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
