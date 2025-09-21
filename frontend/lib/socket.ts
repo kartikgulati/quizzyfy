@@ -1,5 +1,4 @@
 import { io, Socket } from 'socket.io-client';
-import { GameEvents } from '@/types/game';
 
 class SocketManager {
   private socket: Socket | null = null;
@@ -22,19 +21,19 @@ class SocketManager {
     }
   }
 
-  emit<K extends keyof GameEvents>(event: K, data?: any): void {
+  emit(event: string, data?: any): void {
     if (this.socket) {
       this.socket.emit(event, data);
     }
   }
 
-  on<K extends keyof GameEvents>(event: K, callback: (data: GameEvents[K]) => void): void {
+  on(event: string, callback: (data: any) => void): void {
     if (this.socket) {
       this.socket.on(event, callback);
     }
   }
 
-  off<K extends keyof GameEvents>(event: K, callback?: (data: GameEvents[K]) => void): void {
+  off(event: string, callback?: (data: any) => void): void {
     if (this.socket) {
       this.socket.off(event, callback);
     }
