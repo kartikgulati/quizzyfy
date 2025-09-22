@@ -33,7 +33,7 @@ export default function Home() {
               <Zap className="h-12 w-12 text-yellow-400" />
             </div>
           </div>
-          <h1 className="text-5xl font-bold text-white mb-4">Quizzyfy</h1>
+          <h1 className="text-5xl font-bold text-white mb-4">Quizzzyfy</h1>
           <p className="text-xl text-gray-300 mb-8">
             A free Real-time interactive quiz platform for everyone
           </p>
