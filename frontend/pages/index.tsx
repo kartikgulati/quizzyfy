@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { Users, Gamepad2, Trophy, Zap } from 'lucide-react';
+import Head from 'next/head'
 
 export default function Home() {
   const [playerName, setPlayerName] = useState('');
@@ -20,7 +21,24 @@ export default function Home() {
   };
 
   return (
+    
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
+
+      <Head>
+        <title>Quizzzyfy - Real-time Interactive Quiz Platform</title>
+        <meta name="description" content="A free real-time interactive quiz platform for everyone. Host or join quizzes instantly with just a PIN!" />
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Quizzzyfy - Real-time Interactive Quiz Platform" />
+        <meta property="og:description" content="A free real-time interactive quiz platform for everyone. Host or join quizzes instantly with just a PIN!" />
+        <meta property="og:image" content="/frontend/assets/image.png" />
+        <meta property="og:url" content="https://quizzzyfy.vercel.app/" />
+        <meta property="og:type" content="website" />
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Quizzzyfy - Real-time Interactive Quiz Platform" />
+        <meta name="twitter:description" content="A free real-time interactive quiz platform for everyone. Host or join quizzes instantly with just a PIN!" />
+        <meta name="twitter:image" content="/frontend/assets/image.png" />
+      </Head>
       <div className="max-w-4xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
