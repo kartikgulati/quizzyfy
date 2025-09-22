@@ -45,7 +45,7 @@ export default function Home() {
         />
         <meta
           property="og:image"
-          content="https://metatags.io/images/meta-tags.png"
+          // content="https://metatags.io/images/meta-tags.png"
         />
 
         <meta property="twitter:card" content="summary_large_image" />
@@ -60,7 +60,7 @@ export default function Home() {
         />
         <meta
           property="twitter:image"
-          content="https://metatags.io/images/meta-tags.png"
+          // content="https://metatags.io/images/meta-tags.png"
         />
       </Head>
       <div className="max-w-4xl w-full">
