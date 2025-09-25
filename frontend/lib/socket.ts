@@ -2,7 +2,7 @@ import { io, Socket } from 'socket.io-client';
 
 class SocketManager {
   private socket: Socket | null = null;
-  private url = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+  private url = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3000';
 
   connect(): Socket {
     if (!this.socket) {

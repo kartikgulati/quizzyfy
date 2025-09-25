@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { Users, Gamepad2, Trophy, Zap } from "lucide-react";
 import Head from "next/head";
+import { Analytics } from '@vercel/analytics/next';
+
 
 export default function Home() {
   const [playerName, setPlayerName] = useState("");
@@ -63,6 +65,7 @@ export default function Home() {
           // content="https://metatags.io/images/meta-tags.png"
         />
       </Head>
+      <Analytics />
       <div className="max-w-4xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

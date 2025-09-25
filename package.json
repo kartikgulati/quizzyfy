@@ -33,5 +33,8 @@
     "express"
   ],
   "author": "Your Name",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
+  }
 }
