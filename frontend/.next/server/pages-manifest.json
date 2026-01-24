@@ -1,1 +1,9 @@
-{"/_app":"pages/_app.js","/host/create":"pages/host/create.html","/host/dashboard":"pages/host/dashboard.html","/game/[pin]":"pages/game/[pin].html","/host/game/[pin]":"pages/host/game/[pin].html","/":"pages/index.html","/_error":"pages/_error.js","/_document":"pages/_document.js","/404":"pages/404.html"}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/host/dashboard": "pages/host/dashboard.js",
+  "/host/game/[pin]": "pages/host/game/[pin].js",
+  "/": "pages/index.js",
+  "/game/[pin]": "pages/game/[pin].js"
+}

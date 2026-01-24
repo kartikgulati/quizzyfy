@@ -72,7 +72,9 @@ sampleQuizzes.forEach(quiz => {
     showResults: false,
     gameEnded: false,
     questionStartTime: null,
-    hostSocket: null
+    questionStartTime: null,
+    hostSocket: null,
+    questionTimeout: null
   });
 });
 
@@ -114,7 +116,9 @@ io.on('connection', (socket) => {
       showResults: false,
       gameEnded: false,
       questionStartTime: null,
-      hostSocket: socket.id
+      questionStartTime: null,
+      hostSocket: socket.id,
+      questionTimeout: null
     };
     
     games.set(pin, gameData);
@@ -147,7 +151,9 @@ io.on('connection', (socket) => {
         showResults: false,
         gameEnded: false,
         questionStartTime: null,
-        hostSocket: socket.id
+        questionStartTime: null,
+        hostSocket: socket.id,
+        questionTimeout: null
       };
       
       games.set(pin, game);
@@ -393,7 +399,7 @@ function startQuestion(pin) {
   console.log(`Started question ${game.currentQuestionIndex + 1} for game ${pin}`);
   
   // Set timer for question end
-  setTimeout(() => {
+  game.questionTimeout = setTimeout(() => {
     if (games.has(pin) && !game.showResults) {
       endQuestion(pin);
     }
@@ -405,6 +411,10 @@ function endQuestion(pin) {
   if (!game || game.showResults) return;
   
   game.showResults = true;
+  if (game.questionTimeout) {
+    clearTimeout(game.questionTimeout);
+    game.questionTimeout = null;
+  }
   const question = game.quiz.questions[game.currentQuestionIndex];
   
   const results = Array.from(game.players.values()).map(player => ({
@@ -447,6 +457,10 @@ function endGame(pin) {
   
   game.gameEnded = true;
   game.isActive = false;
+  if (game.questionTimeout) {
+    clearTimeout(game.questionTimeout);
+    game.questionTimeout = null;
+  }
   
   const finalLeaderboard = getLeaderboard(pin);
   
