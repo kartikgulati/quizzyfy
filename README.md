@@ -1,6 +1,65 @@
-# Quizzyfy Render Deployment Guide
+# Quizzyfy
 
-This guide will walk you through deploying your Quizzyfy application using Render.com.
+Quizzyfy is a modern, real-time multiplayer trivia and quiz application inspired by platforms like Kahoot!. It allows hosts to easily create interactive quizzes that players can join instantly using a unique game PIN, keeping track of scores and live leaderboards in real-time.
+
+## ✨ Features & Functionality
+
+- **Live Multiplayer Gameplay**: Real-time connections using WebSockets provide instant updates for answering questions, timer countdowns, and displaying results.
+- **Host Dashboard**:
+  - Quickly create custom quizzes with varied questions.
+  - Launch a lobby and monitor joining players in real-time.
+  - Advance the game question-by-question, maintaining the flow of the session.
+- **Player Interface**: 
+  - Join games simply by entering a Game PIN and a nickname.
+  - A fast, reactive UI for selecting answers before the timer runs out.
+- **Dynamic Leaderboards**: View real-time score updates and rankings between each round, keeping the competition fierce.
+- **Modern, Mobile-First Design**: Fully responsive interface built with smooth, fluid animations for the best user experience on both desktop and mobile devices.
+
+## 🛠️ Tech Stack
+
+**Frontend (Client)**
+- **Framework**: [Next.js 14](https://nextjs.org/) (React framework)
+- **Language**: [TypeScript](https://www.typescriptlang.org/) for type safety
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) for fast, utility-first styling
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) for declarative, stunning UI transitions
+- **Real-Time Communication**: [Socket.IO Client](https://socket.io/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+**Backend (Server)**
+- **Runtime**: [Node.js](https://nodejs.org/)
+- **Framework**: [Express.js](https://expressjs.com/) for HTTP routing
+- **WebSocket Server**: [Socket.IO](https://socket.io/) for high-performance bidirectional event-based communication
+- **Utilities**: [UUID](https://github.com/uuidjs/uuid) for unique room and player identifiers, and CORS for cross-origin security.
+
+## 🚀 Quick Start (Local Development)
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/yourusername/quizzyfy.git
+cd quizzyfy
+```
+
+### 2. Start the Backend
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+### 3. Start the Frontend
+In a new terminal:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Your app will be running at `http://localhost:3000`.
+
+---
+
+# 🌐 Render Deployment Guide
+
+This guide will walk you through deploying your Quizzyfy application using Render.com and Vercel.
 
 ## Prerequisites
 
